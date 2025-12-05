@@ -106,3 +106,25 @@ async function createdata(){
   }
 }
 createdata();
+
+//update data using put method
+async function updatedata(){
+    try{
+        var res=await fetch("https://jsonplaceholder.typicode.com/users/1",{
+            method:"PUT",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                name:"sasi",
+                age:25
+            
+            }) 
+    });
+    var data=await res.json()
+    console.log(data)
+  } 
+    catch(error){
+    console.log(error)
+  }
+}
