@@ -128,3 +128,18 @@ async function updatedata(){
     console.log(error)
   }
 }
+
+//delete data using delete method
+async function deletedata(){
+    try{
+        var res=await fetch("https://jsonplaceholder.typicode.com/users/1",{
+            method:"DELETE"
+    });
+    var data=await res.json()
+    console.log(data)
+  }
+  catch(error){
+    console.log(error)
+  }                                      
+}
+deletedata();
