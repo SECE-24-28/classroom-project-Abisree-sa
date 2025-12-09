@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Form Validation</title>
+</head>
+
+<body>
+
+<h2>Student Registration Form</h2>
+
+<form id="studentForm">
+
+    Student Name: <br>
+    <input type="text" id="name"><br>
+    <span id="nameError"></span><br><br>
+
+    Password: <br>
+    <input type="password" id="password"><br>
+    <span id="passError"></span><br><br>
+
+    Confirm Password: <br>
+    <input type="password" id="cpassword"><br>
+    <span id="cpassError"></span><br><br>
+
+    Gender: <br>
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <input type="radio" name="gender" value="Other"> Other <br>
+    <span id="genderError"></span><br><br>
+
+    Qualification: <br>
+    <select id="qualification">
+        <option value="">--Select--</option>
+        <option value="10th">10th</option>
+        <option value="12th">12th</option>
+        <option value="UG">UG</option>
+        <option value="PG">PG</option>
+    </select><br>
+    <span id="qualError"></span><br><br>
+
+    <button type="button" onclick="validateForm()">Submit</button>
+    <button type="reset">Reset</button>
+
+</form>
+
+<script>
+function validateForm() {
+    let isValid = true;
+
+    let name = document.getElementById("name").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let cpassword = document.getElementById("cpassword").value.trim();
+    let gender = document.querySelector('input[name="gender"]:checked');
+    let qualification = document.getElementById("qualification").value;
+
+    document.getElementById("nameError").innerHTML = "";
+    document.getElementById("passError").innerHTML = "";
+    document.getElementById("cpassError").innerHTML = "";
+    document.getElementById("genderError").innerHTML = "";
+    document.getElementById("qualError").innerHTML = "";
+
+    if (name === "") {
+        document.getElementById("nameError").innerHTML = "Student name is required";
+        isValid = false;
+    }
+
+    if (password.length < 6) {
+        document.getElementById("passError").innerHTML = "Password must be at least 6 characters";
+        isValid = false;
+    }
+
+    if (password !== cpassword) {
+        document.getElementById("cpassError").innerHTML = "Passwords do not match";
+        isValid = false;
+    }
+
+    if (!gender) {
+        document.getElementById("genderError").innerHTML = "Please select gender";
+        isValid = false;
+    }
+
+    if (qualification === "") {
+        document.getElementById("qualError").innerHTML = "Please select qualification";
+        isValid = false;
+    }
+
+    if (isValid) {
+        alert("Form submitted successfully!");
+    }
+}
+</script>
+
+</body>
+</html>
+
+
